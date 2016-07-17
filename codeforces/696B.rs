@@ -1,4 +1,5 @@
 use std::io;
+use std::thread;
 
 fn dfs_sizes(vertex: usize, childs: &Vec<Vec<usize>>, tree_sizes: &mut Vec<usize>) {
     tree_sizes[vertex] = 1;
@@ -25,7 +26,7 @@ fn dfs_result(
     }
 }
 
-fn main() {
+fn solve() {
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("failed read_line");
     let n = input.trim().parse::<usize>().unwrap();
@@ -54,4 +55,11 @@ fn main() {
         print!("{:.6} ", result);
     }
     print!("\n");
+}
+
+fn main() {
+    let child = thread::Builder::new().stack_size(64 * 1024 * 1024).spawn(move || {
+        solve();
+    }).unwrap();
+    child.join().unwrap();
 }
