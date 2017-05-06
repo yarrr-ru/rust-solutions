@@ -1,6 +1,4 @@
-// Incomplete solution to an advanced data structures problem.
-// By iteratively improve on this file, we hope to find
-// nice general patterns for use when competing in Rust.
+// INCOMPLETE AND BROKEN: please ignore this file.
 
 use std::io;
 use std::rc::Rc;
